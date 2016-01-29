@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HeXAFlash!</string>
+    <string name="permlab_flashlight">FLASHLIGHT</string>
+    <string name="permdesc_flashlight">FLASHLIGHT</string>
+</resources>
