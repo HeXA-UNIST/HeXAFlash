@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -28,12 +27,6 @@ import java.util.List;
  */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class FlashActivity extends Activity {
-    private static final String TAG = "FlashActivity";
-
-    // for version under LOLLIPOP
-    private Camera cam;
-
-    // for version above LOLLIPOP
     private CameraCaptureSession mSession;
     private CaptureRequest.Builder mBuilder;
     private CameraDevice mCameraDevice;
@@ -85,8 +78,7 @@ public class FlashActivity extends Activity {
             try {
                 mBuilder = camera.createCaptureRequest(CameraDevice.TEMPLATE_MANUAL);
                 mBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AF_MODE_AUTO);
-                // delete comment -> default = on
-//                mBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_TORCH);
+//                mBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_TORCH); // default = on
                 List<Surface> list = new ArrayList<Surface>();
                 mSurfaceTexture = new SurfaceTexture(1);
                 Size size = getSmallestSize(mCameraDevice.getId());
