@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startActivity(new Intent(this, FlashActivity.class));
             finish();
             return;
         }
+        setContentView(R.layout.activity_main);
         Switch switch_flash = (Switch) findViewById(R.id.switch_flash);
         switch_flash.setOnCheckedChangeListener(new MyCheckedChangeListener());
     }
